@@ -1,7 +1,7 @@
 {
-  "name": "test",
+  "name": "pushnotification",
   "version": "1.0.0",
-  "description": "",
+  "description": "pushnotification for ouut",
   "main": "test.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
