@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "compression": "^1.6.2",
+    "debug": "~2.2.0",
+    "express": "^4.13.4",
+    "fcm-node": "^1.0.7",
+    "mongoose": "^4.5.0",
+    "winston": "^2.2.0"
+  },
+  "gitHead": "5d07f14195e9737cf1d80c65f45e66f1b9a9e8c9",
+  "readme": "# n-p",
+  "readmeFilename": "README.md",
+  "_id": "test@1.0.0",
+  "_shasum": "6e283a28fee015fde65d5f9749b6102953ad5333",
+  "_from": "git+https://github.com/subhamAggarwal/n-p.git",
+  "_resolved": "git+https://github.com/subhamAggarwal/n-p.git#5d07f14195e9737cf1d80c65f45e66f1b9a9e8c9"
+}
