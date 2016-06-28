@@ -82,7 +82,7 @@ module.exports = {
                 logger.log('error', { 'message': 'internal server error', 'status': 500 });
             }
             else if (records.result.n == 0) {
-                callback({ 'message': 'No user device exists', 'status': 404, 'data': 'please enter a registered device token' },null);
+                callback({ 'message': 'No user device exists', 'status': 404, 'data': 'please enter a registered device token' }, null);
                 logger.log('info', { 'message': 'No user device exists', 'status': 404 });
             }
             else {
@@ -124,9 +124,24 @@ module.exports = {
                     }
                 };
                 fcm.send(Message, function (err, response) {
-                    if (!err.includes("success")) {
-                        callback({ 'message': "something has gone wrong", 'status': 500, 'data': err }, null);
-                        logger.log('error', { 'message': 'internal server error while sending fcm', 'status': 500 });
+                    
+                    if (err) {
+                        err = JSON.parse(err);
+                        if (err.failure > 0) {
+                            logger.log('error', { 'message': 'internal server error while sending fcm broadcast.failure = ' + err.failure, 'status': 500 });
+                            callback({ 'message': "something has gone wrong", 'status': 500, 'data': err }, null);
+                        }
+                        if (err.success > 0) {
+                            var msg = {
+                                recieverUserIds: recieverUserIds,
+                                message: message.data,
+                                senderUserId: senderUserId.toString,
+                                senderName: message.sender
+                            }
+                            logger.log('info', { 'data': msg, 'status': 200 });
+                            callback(null, { 'message': "notification successfully sent ", 'status': 200, 'data': null });
+                        }
+
                     }
                     else {
                         var msg = {
